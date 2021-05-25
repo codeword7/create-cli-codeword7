@@ -20,7 +20,7 @@ module.exports = async ({ name, message, hint, initial }) => {
       store: new Store({
         path: path.join(
           os.homedir(),
-          `.history/create-node-cli/${name}.json`
+          `.history/create-cli-codeword7/${name}.json`
         )
       })
     };

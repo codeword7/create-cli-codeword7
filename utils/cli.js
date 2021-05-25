@@ -26,7 +26,7 @@ const commands = {
 };
 
 const helpText = meowHelp({
-  name: `create-node-cli`,
+  name: `create-cli-codeword7`,
   flags,
   commands
 });
