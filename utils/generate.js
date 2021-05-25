@@ -1,10 +1,12 @@
 const path = require('path')
-const execa = require('execa');
+const execa = require('execa')
+const ora = require('ora');
 const copy = require('copy-template-dir')
 const alert = require('cli-alerts-codeword7');
-const { green: g, dim: d } = require('chalk')
+const { green: g, dim: d, yellow: y } = require('chalk')
 const questions = require('./questions')
 
+const spinner = ora({ text: '' })
 
 module.exports = async () => {
   const vars = await questions()
@@ -20,8 +22,25 @@ module.exports = async () => {
       console.log(`${g(`CREATED`)} ${fileName}`);
     })
 
+    console.log();
+    spinner.start(
+      `${y(`DEPENDENCIES`)} installing…\n\n${d(`It may take moment…`)}`
+    );
     process.chdir(outDir)
+    const pkgs = [
+      `meow@9.0.0`,
+      `chalk@latest`,
+      `cli-alerts-codeword7@latest`,
+      `cli-welcome@latest`,
+      `cli-meow-help@latest`,
+      `cli-handle-error@latest`,
+      `cli-handle-unhandled@latest`
+    ];
+    await execa(`npm`, [`install`, ...pkgs]);
+    await execa(`npm`, [`install`, `prettier`, `-D`]);
     await execa(`npm`, [`dedupe`])
+    spinner.succeed(`${g(`DEDUPE`)} ran`)
+
     alert({
       type: `success`,
       name: `All Done`,
