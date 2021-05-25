@@ -6,6 +6,15 @@
 		"create-cli-codeword7": "index.js",
 		"ncli": "index.js"
 	},
+	"author": {
+    "name": "codeword7|neeraj",
+    "email": "ny29599@gmail.com",
+    "url": "https://twitter.com/codeword007"
+  },
+  "keywords": [
+		"Create CLI",
+    "codeword7",
+    "Neeraj Kumar"],
 	"dependencies": {
 		"await-to-js": "^3.0.0",
 		"chalk": "^4.1.1",
