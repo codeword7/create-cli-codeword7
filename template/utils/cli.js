@@ -16,29 +16,26 @@ const flags = {
   },
   version: {
     type: `boolean`,
-    default: true,
     alias: `v`,
     desc: `Print CLI version`
   }
-}
+};
 
 const commands = {
-  help: {
-    description: `Print help info`
-  }
-}
+  help: { desc: `Print help info` }
+};
 
 const helpText = meowHelp({
   name: `{{command}}`,
   flags,
   commands
-})
+});
 
 const options = {
   inferType: true,
   description: false,
   hardRejection: false,
   flags
-}
+};
 
-module.exports = meow(helpText, options)
+module.exports = meow(helpText, options);
