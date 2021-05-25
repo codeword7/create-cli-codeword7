@@ -1,0 +1,12 @@
+{
+	"name": "create-node-cli-codeword7",
+	"description": "CLI to create Node.js CLIs.",
+	"version": "0.0.1",
+	"bin": {
+		"create-node-cli-codeword7": "index.js",
+		"ncli": "index.js"
+	},
+	"dependencies": {
+		"copy-template-dir": "^1.4.0"
+	}
+}
