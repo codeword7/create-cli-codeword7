@@ -1,5 +1,4 @@
 const alert = require('cli-alerts-codeword7')
-
 module.exports = (info) => {
   alert({
     type: `warning`,
