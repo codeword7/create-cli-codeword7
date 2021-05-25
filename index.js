@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 const path = require('path')
 const copy = require('copy-template-dir')
+const alert = require('cli-alerts-codeword7');
+const { green: g, dim: d } = require('chalk')
 const init = require('./utils/init')
 const ask = require('./utils/ask')
 
@@ -24,20 +26,22 @@ const start = async () => {
     authorEmail,
     authorUrl
   }
-
+  const output = vars.name
   const inDir = path.join(__dirname, `template`)
-  const outDir = path.join(process.cwd(), vars.name)
+  const outDir = path.join(process.cwd(), output)
 
   copy(inDir, outDir, vars, (err, createdFiles) => {
     if (err) throw err;
-    console.log()
-    console.log(`Creating files in ./${vars.name}`)
+    console.log(d(`\nCreating files in ${g(`./${output}`)} directory:\n`))
     createdFiles.forEach(filePath => {
       const fileName = path.basename(filePath)
-      console.log(`Created ${fileName}`);
+      console.log(`${g(`CREATED`)} ${fileName}`);
     })
-    console.log(`done`)
-    console.log()
+    alert({
+      type: `success`,
+      name: `All Done`,
+      msg: `\n\n${createdFiles.length} files created in ${d(`./${output}`)} directory`
+    })
   })
 }
 
