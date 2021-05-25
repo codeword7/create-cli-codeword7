@@ -5,7 +5,7 @@ const unHandled = require('cli-handle-unhandled')
 module.exports = (clear = true) => {
   unHandled()
   welcome({
-    title: 'create-nodejs-cli',
+    title: 'create-cli-codeword7',
     tagline: 'by codeword7',
     description: pkg.description,
     version: pkg.version,
