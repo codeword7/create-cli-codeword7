@@ -1,27 +1,28 @@
 #!/usr/bin/env node
 const path = require('path')
 const copy = require('copy-template-dir')
-const { Input } = require('enquirer')
-const to = require('await-to-js').default
-const handleError = require('cli-handle-error')
-
 const init = require('./utils/init')
+const ask = require('./utils/ask')
 
 const start = async () => {
   init()
 
-  const [err, name] = await to(
-    new Input({
-      message: 'CLI name?',
-      hint: `(use kabab-case-only)`
-    }).run()
-  )
+  const name = await ask({ message: `CLI name?`, hint: `(use kabab-case only)` })
+  const description = await ask({ message: `CLI description?` })
+  const version = await ask({ message: `CLI name?`, initial: `0.0.1` })
+  const lincense = await ask({ message: `CLI license?`, initial: `UNLICENSED` })
+  const authorName = await ask({ message: `CLI author name?` })
+  const authorEmail = await ask({ message: `CLI author email?` })
+  const authorUrl = await ask({ message: `CLI author url?` })
 
-  handleError(`INPUT`, err)
   const vars = {
     name,
-    description: `CLI to resize and optimize images`,
-    version: `0.0.1`
+    description,
+    version,
+    lincense,
+    authorName,
+    authorEmail,
+    authorUrl
   }
 
   const inDir = path.join(__dirname, `template`)
