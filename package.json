@@ -1,10 +1,10 @@
 {
 	"name": "create-cli-codeword7",
 	"description": "CLI to create Node.js CLIs.",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"license": "MIT",
 	"main": "index.js",
-  "repository": "codeword7/create-cli-codeword7",
+	"repository": "codeword7/create-cli-codeword7",
 	"bin": {
 		"create-cli-codeword7": "index.js",
 		"ncli": "index.js"
